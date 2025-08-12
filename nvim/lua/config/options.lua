@@ -21,3 +21,13 @@ opt.swapfile = false
 opt.undofile = true
 --검색 하이라이트
 vim.o.hlsearch = true
+
+
+-- 자동 삭제: Neovim 종료 시 ShaDa 임시 파일 제거
+vim.api.nvim_create_autocmd("VimLeavePre", {
+    callback = function()
+        local shada_dir = vim.fn.stdpath("data") .. "\\shada"
+        local result = vim.fn.system({ "cmd", "/c", "del", "/q", shada_dir .. "\\main.shada.tmp.*" })
+        print("ShaDa temp file deletion result: " .. result)
+    end,
+})
