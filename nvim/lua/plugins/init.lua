@@ -48,27 +48,27 @@ return {
         },
     },
     -- 파일 탐색기
-    
-{
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-    },
-    config = function()
-        vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
 
-        require("neo-tree").setup({
-            window = {
-                mappings = {
-                    ["v"] = "open_vsplit",    -- 수직 분할로 열기
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+
+            require("neo-tree").setup({
+                window = {
+                    mappings = {
+                        ["v"] = "open_vsplit", -- 수직 분할로 열기
+                    }
                 }
-            }
-        })
-    end
-}
-,
+            })
+        end
+    }
+    ,
     -- 퍼지 파인더 (수정)
     {
         "nvim-telescope/telescope.nvim",
@@ -83,13 +83,28 @@ return {
 
             -- 키맵 설정
             vim.keymap.set("n", "<leader>ff", builtin.find_files)
-            vim.keymap.set("n", "<leader>fg", builtin.live_grep)
+
+            vim.keymap.set("n", "<leader>fg", function()
+                builtin.live_grep({
+                    default_text = vim.fn.expand("<cword>"),
+                    glob_pattern = { "*.c", "*.h", "*.cpp" },
+                    attach_mappings = function(_, map)
+                        vim.schedule(function()
+                            vim.cmd("stopinsert")
+                        end)
+                        return true
+                    end,
+                })
+            end, { desc = "Live Grep with word under cursor (C/C++ only)" })
+
             vim.keymap.set("n", "<leader>fb", builtin.buffers)
             vim.keymap.set("n", "<leader>fp", function()
                 telescope.extensions.projects.projects {}
             end, { desc = "Find Projects" })
         end,
-    },
+    }
+
+    ,
 
     -- Telescope project 확장
     {
@@ -258,5 +273,4 @@ return {
             })
         end
     }
-
 }
