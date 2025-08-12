@@ -19,9 +19,8 @@ keymap("n", "<C-k>", "<C-w>k", { desc = "위 창으로" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "오른쪽 창으로" })
 --c17 디버깅
 vim.keymap.set('n', '<leader>r', function()
-  vim.cmd('w') -- 현재 파일 저장
+  vim.cmd('w')                          -- 현재 파일 저장
   local filename = vim.fn.expand('%:p') -- 전체 경로 가져오기
-  vim.cmd('split | terminal') -- 가로 분할 터미널 열기
+  vim.cmd('split | terminal')           -- 가로 분할 터미널 열기
   vim.fn.chansend(vim.b.terminal_job_id, 'g++ "' .. filename .. '" -o a.exe && a.exe\n')
 end, { noremap = true, silent = true })
-
