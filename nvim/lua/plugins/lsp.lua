@@ -51,7 +51,7 @@ return {
                         filetypes = { "c", "cpp", "objc", "objcpp" },
                         root_dir = function(fname)
                             return lspconfig.util.root_pattern("compile_commands.json", ".git", "ProcessorExpert.pe")(
-                                fname)
+                                    fname)
                                 or lspconfig.util.find_git_ancestor(fname)
                                 or vim.fn.getcwd()
                         end,
