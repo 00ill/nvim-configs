@@ -6,7 +6,7 @@ This repository contains a personal Neovim configuration using Lazy.nvim as the 
 
 ### UI & Appearance
 - **sainnhe/everforest** – Colorscheme
-- **nvimdev/dashboard-nvim** – Startup dashboard
+- **goolord/alpha-nvim** – Customizable startup dashboard with ASCII art and shortcuts
 - **folke/noice.nvim** – Enhanced UI for messages and LSP
 - **rcarriga/nvim-notify** – Notification UI
 - **nvim-lualine/lualine.nvim** – Statusline
@@ -37,7 +37,7 @@ This repository contains a personal Neovim configuration using Lazy.nvim as the 
 ### Utilities
 - **nvim-lua/plenary.nvim** – Lua utility functions
 - **MunifTanjim/nui.nvim** – UI components
-- **neodev.nvim** – Lua development support
+- **folke/neodev.nvim** – Lua development support
 
 ## ⚙️ Target Environment
 
