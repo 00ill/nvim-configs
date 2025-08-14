@@ -94,24 +94,52 @@ return {
     -- 파일 탐색기
 
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+    },
+    config = function()
+        -- 아이콘 플러그인 수동 로딩 (중요)
+        require("nvim-web-devicons").setup()
 
-            require("neo-tree").setup({
-                window = {
-                    mappings = {
-                        ["v"] = "open_vsplit", -- 수직 분할로 열기
-                    }
+        -- 파일 탐색기 토글 키맵
+        vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+
+        -- neo-tree 설정
+        require("neo-tree").setup({
+            window = {
+                mappings = {
+                    ["v"] = "open_vsplit", -- 수직 분할로 열기
                 }
-            })
-        end
-    }
+            },
+            filesystem = {
+                filtered_items = {
+                    visible = true,          -- 숨김 파일도 표시
+                    hide_dotfiles = false,  -- .파일 숨기지 않음
+                    hide_gitignored = false -- gitignore된 파일도 표시
+                },
+            },
+            default_component_configs = {
+                icon = {
+                    folder_closed = "",     -- 닫힌 폴더 아이콘
+                    folder_open = "",       -- 열린 폴더 아이콘
+                    folder_empty = "",      -- 빈 폴더 아이콘
+                    default = "",           -- 일반 파일 아이콘
+                    highlight = "NeoTreeFileIcon",
+                },
+                name = {
+                    trailing_slash = false,
+                    use_git_status_colors = true,
+                    highlight = "NeoTreeFileName",
+                },
+            }
+        })
+    end
+}
+
+
     ,
     -- 퍼지 파인더 (수정)
     {
@@ -216,12 +244,21 @@ return {
         end
     },
     -- 상태바
-    {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require("lualine").setup()
-        end
-    },
+    
+{
+    "nvim-lualine/lualine.nvim",
+    config = function()
+        require("lualine").setup({
+            options = {
+                icons_enabled = true,
+                theme = "auto",
+                component_separators = { left = "", right = "" },
+                section_separators = { left = "", right = "" },
+            },
+        })
+    end
+},
+
 
     -- nvim-cmp 기본 설정
     {
