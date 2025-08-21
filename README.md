@@ -20,12 +20,10 @@ Windows와 Linux 환경에서 각각 최적화된 설정을 사용하며, 공통
 ## 🚀 사용 방법
 
 ### Windows
-```bash
-git clone -b windows https://github.com/00ill/nvim-configs.git %LOCALAPPDATA%
-vim
+```bashgit clone -b windows https://github.com/00ill/nvim-configs.git %LOCALAPPDATA%
 ```
 
 ### Linux
 ```bash
-git clone -b linux https://github.com/00ill/nvim-configs.git ~/.config/nvim
+git clone -b linux https://github.com/00ill/nvim-configs.git ~/.config
 ```
