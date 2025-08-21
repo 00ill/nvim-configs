@@ -1,47 +1,31 @@
-# Neovim Configs by 00ill
 
-This repository contains a personal Neovim configuration using Lazy.nvim as the plugin manager. It is designed for embedded systems development in C on Arch Linux.
+# 🧠 nvim-configs
 
-## 🧩 Plugins Used
+Neovim 설정을 운영체제별로 분리하여 관리하는 개인 설정 저장소입니다.  
+Windows와 Linux 환경에서 각각 최적화된 설정을 사용하며, 공통 설정은 `main` 브랜치에서 통합 관리합니다.
 
-### UI & Appearance
-- **sainnhe/everforest** – Colorscheme
-- **goolord/alpha-nvim** – Customizable startup dashboard with ASCII art and shortcuts
-- **folke/noice.nvim** – Enhanced UI for messages and LSP
-- **rcarriga/nvim-notify** – Notification UI
-- **nvim-lualine/lualine.nvim** – Statusline
-- **lukas-reineke/indent-blankline.nvim** – Indentation guides
-- **nvim-tree/nvim-web-devicons** – File icons
+## 📁 브랜치 구조
 
-### Navigation & Project Management
-- **nvim-neo-tree/neo-tree.nvim** – File explorer
-- **nvim-telescope/telescope.nvim** – Fuzzy finder
-- **nvim-telescope/telescope-project.nvim** – Project switching
-- **ahmedkhalf/project.nvim** – Project root detection
+- `main`: 공통 설정 및 전체 관리용 브랜치
+- `windows`: Windows 환경에서 사용하는 설정
+- `linux`: Linux 환경에서 사용하는 설정
 
-### Coding Support
-- **nvim-treesitter/nvim-treesitter** – Syntax highlighting and parsing
-- **kevinhwang91/nvim-hlslens** – Search result highlighting
-- **windwp/nvim-autopairs** – Auto-pairing brackets and quotes
-- **numToStr/Comment.nvim** – Comment toggling
+## 🔧 주요 특징
 
-### Completion & LSP
-- **hrsh7th/nvim-cmp** – Completion engine
-- **hrsh7th/cmp-nvim-lsp** – LSP source for completion
-- **hrsh7th/cmp-buffer** – Buffer source
-- **hrsh7th/cmp-path** – Path source
-- **hrsh7th/cmp-cmdline** – Command-line completion
-- **nvim-lspconfig** – LSP configuration
-- **clangd** – C/C++ language server
+- **Lazy.nvim** 기반 플러그인 관리
+- **C 언어 및 임베디드 개발**에 최적화된 설정
+- OS별 설정 분리로 충돌 없는 환경 구성
+- 실제 사용 시에는 OS에 맞는 브랜치만 클론하여 사용
 
-### Utilities
-- **nvim-lua/plenary.nvim** – Lua utility functions
-- **MunifTanjim/nui.nvim** – UI components
-- **folke/neodev.nvim** – Lua development support
+## 🚀 사용 방법
 
-## ⚙️ Target Environment
+### Windows
+```bash
+git clone -b windows https://github.com/00ill/nvim-configs.git %LOCALAPPDATA%
+vim
+```
 
-- **OS**: Arch Linux
-- **Editor**: Neovim (Lua-based configuration)
-- **Language Focus**: C (embedded systems)
-- **Frontend**: Neovide (optional GUI)
+### Linux
+```bash
+git clone -b linux https://github.com/00ill/nvim-configs.git ~/.config/nvim
+```
