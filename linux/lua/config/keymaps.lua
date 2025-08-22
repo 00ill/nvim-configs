@@ -29,5 +29,5 @@ vim.keymap.set('n', '<leader>r', function()
   vim.cmd('w')                          -- 현재 파일 저장
   local filename = vim.fn.expand('%:p') -- 전체 경로 가져오기
   vim.cmd('split | terminal')           -- 가로 분할 터미널 열기
-  vim.fn.chansend(vim.b.terminal_job_id, 'g++ "' .. filename .. '" -o a.exe && a.exe\n')
+  vim.fn.chansend(vim.b.terminal_job_id, 'g++ "' .. filename .. '" -o a.out && a.out\n')
 end, { noremap = true, silent = true })
